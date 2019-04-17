@@ -26,9 +26,29 @@
           </tr>
           <tr>
             <td><b>Status:</b></td>
-            <td>{{member.status}}</td>
+            <td>{{member.status | titlecase}}</td>
           </tr>
         </table>
+      </div>
+      <div class="card-footer"></div>
+    </div>
+  </div>
+  <div class="col-3">
+    <div class="card">
+      <div class="card-header font-weight-bold">Manage lents</div>
+      <div class="card-body">
+        <button class="btn btn-block btn-outline-success">New lent</button>
+        <button class="btn btn-block btn-outline-primary">Check lents</button>
+      </div>
+      <div class="card-footer"></div>
+    </div>
+    <br/>
+    <div class="card">
+      <div class="card-header font-weight-bold">Manage members</div>
+      <div class="card-body">
+        <button class="btn btn-block btn-outline-success">Create new member</button>
+        <button class="btn btn-block btn-outline-primary">Edit member</button>
+        <button class="btn btn-block btn-outline-danger">Remove member</button>
       </div>
       <div class="card-footer"></div>
     </div>
