@@ -10,6 +10,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {MemberDetailsComponent} from './components/frame/details/member-details/member-details.component';
 import {InventoryListComponent} from './components/frame/list/inventory-list/inventory-list.component';
 import {ReactiveFormsModule} from '@angular/forms';
+import {GlobalSettings} from './models/GlobalSettings';
 
 @NgModule({
   declarations: [
@@ -27,7 +28,7 @@ import {ReactiveFormsModule} from '@angular/forms';
     RouterModule,
     ReactiveFormsModule
   ],
-  providers: [],
+  providers: [GlobalSettings],
   bootstrap: [AppComponent]
 })
 export class AppModule {
