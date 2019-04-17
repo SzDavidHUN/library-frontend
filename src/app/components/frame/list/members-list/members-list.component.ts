@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MemberService} from '../../../../services/member.service';
 import {Member} from '../../../../models/member';
+import {GlobalSettings} from '../../../../models/GlobalSettings';
 
 @Component({
   selector: 'app-members-list',
@@ -12,7 +13,8 @@ export class MembersListComponent implements OnInit {
   members: Member[];
 
   constructor(
-    private memberService: MemberService
+    private memberService: MemberService,
+    private globalSettings: GlobalSettings
   ) {
   }
 

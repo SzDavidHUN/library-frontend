@@ -1,6 +1,15 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
+<nav [ngClass]="{
+     'navbar-light': !globalSettings.darkmode,
+     'navbar-dark': globalSettings.darkmode,
+     'bg-light': !globalSettings.darkmode,
+     'bg-dark': globalSettings.darkmode
+     }"
+     class="navbar navbar-expand-lg">
   <a class="navbar-brand" routerLink="/">Library</a>
-  <div class="nav-item"><a class="nav-link" routerLink="/members">Members</a></div>
-  <div class="nav-item"><a class="nav-link" routerLink="/inventory">Inventory</a></div>
-  <div class="nav-item"><a class="nav-link" routerLink="/lents">Lents</a></div>
+  <div class="navbar-nav mr-auto">
+    <div class="nav-item"><a class="nav-link" routerLink="/members">Members</a></div>
+    <div class="nav-item"><a class="nav-link" routerLink="/inventory">Inventory</a></div>
+    <div class="nav-item"><a class="nav-link" routerLink="/lents">Lents</a></div>
+  </div>
+  <button (click)="switchTheme()" class="btn btn-outline-primary btn-sm">Theme</button>
 </nav>

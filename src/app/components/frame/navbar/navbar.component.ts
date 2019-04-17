@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {GlobalSettings} from '../../../models/GlobalSettings';
 
 @Component({
   selector: 'app-navbar',
@@ -7,10 +8,16 @@ import {Component, OnInit} from '@angular/core';
 })
 export class NavbarComponent implements OnInit {
 
-  constructor() {
+  constructor(
+    private globalSettings: GlobalSettings
+  ) {
   }
 
   ngOnInit() {
+  }
+
+  switchTheme() {
+    this.globalSettings.darkmode = !this.globalSettings.darkmode;
   }
 
 }

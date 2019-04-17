@@ -1,6 +1,6 @@
 <div class="row">
   <div class="col-9">
-    <div class="card">
+    <div [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode" class="card">
       <div class="card-header"><b>Member: </b>{{member.name}}</div>
       <div class="card-body">
         <table>
@@ -34,7 +34,7 @@
     </div>
   </div>
   <div class="col-3">
-    <div class="card">
+    <div [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode" class="card">
       <div class="card-header font-weight-bold">Manage lents</div>
       <div class="card-body">
         <button class="btn btn-block btn-outline-success">New lent</button>
@@ -43,7 +43,7 @@
       <div class="card-footer"></div>
     </div>
     <br/>
-    <div class="card">
+    <div [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode" class="card">
       <div class="card-header font-weight-bold">Manage members</div>
       <div class="card-body">
         <button class="btn btn-block btn-outline-success">Create new member</button>

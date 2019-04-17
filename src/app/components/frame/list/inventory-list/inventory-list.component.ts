@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {InventoryService} from '../../../../services/inventory.service';
 import {Item} from '../../../../models/item';
+import {GlobalSettings} from '../../../../models/GlobalSettings';
 
 @Component({
   selector: 'app-inventory-list',
@@ -16,7 +17,8 @@ export class InventoryListComponent implements OnInit {
   showLented: boolean;
 
   constructor(
-    private inventoryService: InventoryService
+    private inventoryService: InventoryService,
+    private globalSettings: GlobalSettings
   ) {
   }
 

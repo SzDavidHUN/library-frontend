@@ -1,4 +1,5 @@
 import {Component} from '@angular/core';
+import {GlobalSettings} from './models/GlobalSettings';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,10 @@ import {Component} from '@angular/core';
 })
 export class AppComponent {
   title = 'library-frontend';
+
+  constructor(
+    private globalSettings: GlobalSettings
+  ) {
+
+  }
 }

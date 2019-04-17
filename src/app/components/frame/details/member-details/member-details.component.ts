@@ -2,6 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {MemberService} from '../../../../services/member.service';
 import {ActivatedRoute} from '@angular/router';
 import {Member} from '../../../../models/member';
+import {GlobalSettings} from '../../../../models/GlobalSettings';
 
 @Component({
   selector: 'app-member-details',
@@ -14,7 +15,8 @@ export class MemberDetailsComponent implements OnInit {
 
   constructor(
     private memberService: MemberService,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private globalSettings: GlobalSettings
   ) {
   }
 

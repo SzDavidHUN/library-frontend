@@ -1,5 +1,7 @@
-<app-navbar></app-navbar>
-<br>
-<div class="container">
-  <router-outlet></router-outlet>
+<div [class.bg-dark]="globalSettings.darkmode">
+  <app-navbar></app-navbar>
+  <br>
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
 </div>
