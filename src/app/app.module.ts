@@ -8,6 +8,8 @@ import {AppRoutingModule} from './services/app-routing.module';
 import {MembersListComponent} from './components/frame/list/members-list/members-list.component';
 import {HttpClientModule} from '@angular/common/http';
 import {MemberDetailsComponent} from './components/frame/details/member-details/member-details.component';
+import {InventoryListComponent} from './components/frame/list/inventory-list/inventory-list.component';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -15,13 +17,15 @@ import {MemberDetailsComponent} from './components/frame/details/member-details/
     NavbarComponent,
     HomepageComponent,
     MembersListComponent,
-    MemberDetailsComponent
+    MemberDetailsComponent,
+    InventoryListComponent
   ],
   imports: [
     AppRoutingModule,
     BrowserModule,
     HttpClientModule,
-    RouterModule
+    RouterModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

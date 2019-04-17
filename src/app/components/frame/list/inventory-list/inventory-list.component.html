@@ -1,0 +1,66 @@
+<div class="row">
+  <div class="col-9">
+    <div class="card">
+      <div class="card-header font-weight-bold">Inventory</div>
+      <div class="card-body">
+        <table class="table table-hover table-light table-bordered table-striped">
+          <thead>
+          <tr>
+            <th>ID</th>
+            <th>Title</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let item of items" routerLink="/item/{{item.id}}">
+            <td class="align-middle text-center"><a>{{item.id}}</a></td>
+            <td class="align-middle"><span class="font-weight-bold">{{item.title}}</span><br>{{item.author}}
+              | {{item.type}}</td>
+            <td *ngIf="item.status === 'In'" class="align-middle" style="width: 16%">
+              <button class="btn btn-block btn-outline-success">Lent</button>
+            </td>
+            <td *ngIf="item.status === 'Out'" class="align-middle" style="width: 16%">
+              <button class="btn btn-block btn-outline-primary">Unlent</button>
+            </td>
+            <td *ngIf="item.status === 'Discarded'" class="align-middle" style="width: 16%">
+              <button class="btn btn-block btn-outline-dark disabled">Discarded</button>
+            </td>
+            <!--                <td class="align-middle" *ngIf="item.status === 'Discarded'"></td>-->
+            <td class="align-middle" style="width: 16%">
+              <button class="btn btn-block btn-outline-primary" routerLink="/item/edit/{{item.id}}">Edit</button>
+            </td>
+            <td class="align-middle" style="width: 16%">
+              <button (click)="discardItem(item.id)" class="btn btn-block btn-outline-danger">Discard</button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card-footer"></div>
+    </div>
+  </div>
+  <div class="col-3">
+    <div class="card">
+      <div class="card-header font-weight-bold">Filter settings</div>
+      <div class="card-body">
+        <button (click)="changeAvailable()" [class.active]="showAvailable" [class.btn-outline-danger]="!showAvailable"
+                [class.btn-outline-success]="showAvailable" class="btn btn-block">Show available
+        </button>
+        <button (click)="changeLented()" [class.active]="showLented" [class.btn-outline-danger]="!showLented"
+                [class.btn-outline-success]="showLented" class="btn btn-block">Show lented
+        </button>
+        <button (click)="changeDiscarded()" [class.active]="showDiscarded" [class.btn-outline-danger]="!showDiscarded"
+                [class.btn-outline-success]="showDiscarded" class="btn btn-block">Show discarded
+        </button>
+      </div>
+      <div class="card-footer"></div>
+    </div>
+    <br/>
+    <div class="card">
+      <div class="card-header font-weight-bold">Manage inventory</div>
+      <div class="card-body">
+        <button class="btn btn-block btn-outline-success">New item</button>
+      </div>
+      <div class="card-footer"></div>
+    </div>
+  </div>
+</div>
