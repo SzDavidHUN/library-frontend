@@ -11,6 +11,7 @@ import {MemberDetailsComponent} from './components/frame/details/member-details/
 import {InventoryListComponent} from './components/frame/list/inventory-list/inventory-list.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {GlobalSettings} from './models/GlobalSettings';
+import {ItemDetailComponent} from './components/frame/details/item-detail/item-detail.component';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import {GlobalSettings} from './models/GlobalSettings';
     HomepageComponent,
     MembersListComponent,
     MemberDetailsComponent,
-    InventoryListComponent
+    InventoryListComponent,
+    ItemDetailComponent
   ],
   imports: [
     AppRoutingModule,

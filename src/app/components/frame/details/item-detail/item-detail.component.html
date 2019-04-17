@@ -1,0 +1,75 @@
+<div class="row">
+  <div class="col-9">
+    <div [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode" class="card">
+      <div class="card-header"><b>{{item.type | titlecase}}: </b>{{item.author}}: {{item.title}}</div>
+      <div class="card-body">
+        <table>
+          <tr>
+            <td><b>ID:</b></td>
+            <td>{{item.id}}</td>
+          </tr>
+          <tr>
+            <td><b>Title:</b></td>
+            <td>{{item.title}}</td>
+          </tr>
+          <tr>
+            <td><b>Author:</b></td>
+            <td>{{item.author}}</td>
+          </tr>
+          <tr>
+            <td><b>Type:</b></td>
+            <td>{{item.type}}</td>
+          </tr>
+          <tr>
+            <td><b>Date:</b></td>
+            <td>{{item.date}}</td>
+          </tr>
+          <tr>
+            <td><b>Status:</b></td>
+            <td>{{item.status | titlecase}}</td>
+          </tr>
+        </table>
+      </div>
+      <div class="card-footer"></div>
+    </div>
+  </div>
+  <div class="col-3">
+    <div [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode" class="card">
+      <div class="card-header font-weight-bold">Manage lent</div>
+      <div class="card-body">
+        <div *ngIf="item.status === 'In'">
+          <button class="btn btn-block btn-outline-success">New lent</button>
+          <br/>
+          <div class="alert alert-success">The {{item.type | lowercase}} is currently available to lent.</div>
+        </div>
+        <div *ngIf="item.status === 'Out'">
+          <button class="btn btn-block btn-outline-primary">Check lent</button>
+          <br/>
+          <div class="alert alert-primary">The {{item.type | lowercase}} is already lented.</div>
+        </div>
+        <div *ngIf="item.status === 'Discarded'">
+          <div class="alert alert-danger">The {{item.type | lowercase}} is discarded, therefore it can not be lented.
+          </div>
+        </div>
+      </div>
+      <div class="card-footer"></div>
+    </div>
+    <br>
+    <div [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode" class="card">
+      <div class="card-header font-weight-bold">Manage {{item.type}}</div>
+      <div class="card-body">
+        <button class="btn btn-block btn-outline-primary">Edit item</button>
+        <button class="btn btn-block btn-outline-danger">Remove item</button>
+      </div>
+      <div class="card-footer"></div>
+    </div>
+    <br/>
+    <div [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode" class="card">
+      <div class="card-header font-weight-bold">Manage inventory</div>
+      <div class="card-body">
+        <button class="btn btn-block btn-outline-success">New item</button>
+      </div>
+      <div class="card-footer"></div>
+    </div>
+  </div>
+</div>
