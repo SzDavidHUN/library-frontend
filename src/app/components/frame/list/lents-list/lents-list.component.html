@@ -1,0 +1,60 @@
+<div class="row">
+  <div class="col-9">
+    <div [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode" class="card">
+      <div class="card-header font-weight-bold">Inventory</div>
+      <div class="card-body">
+        <table [class.table-dark]="globalSettings.darkmode" [class.table-light]="!globalSettings.darkmode"
+               class="table table-hover table-bordered table-striped">
+          <thead>
+          <tr>
+            <th>ID</th>
+            <th>Item</th>
+            <th>Member</th>
+            <th>Date</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let lent of lents"
+              [class.table-danger]="maxDaysOfLent < ((currDate.valueOf() - lent.date) / 86400000).toFixed(0)"
+              routerLink="/lent/{{lent.id}}">
+            <td class="align-middle text-center"><a>{{lent.id}}</a></td>
+            <td class="align-middle">
+              <span class="font-weight-bold">{{lent.item.title}}</span><br>{{lent.item.author}}
+              <div *ngIf="lent.item.id == -1" class="spinner-border"></div>
+            </td>
+            <td class="align-middle">
+              <span class="font-weight-bold">{{lent.member.name}}</span><br>{{lent.member.address}}
+              <div *ngIf="lent.member.id == -1" class="spinner-border"></div>
+            </td>
+            <td class="align-middle">{{lent.date | date: 'yyyy. MM. dd.'}}
+              <br>({{((currDate.valueOf() - lent.date) / 86400000).toFixed(0)}} days ago)
+            </td>
+            <td class="align-middle">
+              <button class="btn btn-block btn-outline-primary">Unlent</button>
+            </td>
+          </tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="card-footer"></div>
+    </div>
+  </div>
+  <div class="col-3">
+    <div [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode" class="card">
+      <div class="card-header font-weight-bold">Filter settings</div>
+      <div class="card-body">
+        <label for="maxDaysOfLent">Maximum days of lent:</label>
+        <input [(ngModel)]="maxDaysOfLent" id="maxDaysOfLent" type="number">
+      </div>
+      <div class="card-footer"></div>
+    </div>
+    <br/>
+    <div [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode" class="card">
+      <div class="card-header font-weight-bold">Manage inventory</div>
+      <div class="card-body">
+        <button class="btn btn-block btn-outline-success">New item</button>
+      </div>
+      <div class="card-footer"></div>
+    </div>
+  </div>
+</div>

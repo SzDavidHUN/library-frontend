@@ -9,9 +9,11 @@ import {MembersListComponent} from './components/frame/list/members-list/members
 import {HttpClientModule} from '@angular/common/http';
 import {MemberDetailsComponent} from './components/frame/details/member-details/member-details.component';
 import {InventoryListComponent} from './components/frame/list/inventory-list/inventory-list.component';
-import {ReactiveFormsModule} from '@angular/forms';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {GlobalSettings} from './models/GlobalSettings';
 import {ItemDetailComponent} from './components/frame/details/item-detail/item-detail.component';
+import {LentsListComponent} from './components/frame/list/lents-list/lents-list.component';
+import {LentDetailComponent} from './components/frame/details/lent-detail/lent-detail.component';
 
 @NgModule({
   declarations: [
@@ -21,14 +23,17 @@ import {ItemDetailComponent} from './components/frame/details/item-detail/item-d
     MembersListComponent,
     MemberDetailsComponent,
     InventoryListComponent,
-    ItemDetailComponent
+    ItemDetailComponent,
+    LentsListComponent,
+    LentDetailComponent
   ],
   imports: [
     AppRoutingModule,
     BrowserModule,
     HttpClientModule,
     RouterModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [GlobalSettings],
   bootstrap: [AppComponent]

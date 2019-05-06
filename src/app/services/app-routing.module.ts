@@ -5,6 +5,8 @@ import {MembersListComponent} from '../components/frame/list/members-list/member
 import {MemberDetailsComponent} from '../components/frame/details/member-details/member-details.component';
 import {InventoryListComponent} from '../components/frame/list/inventory-list/inventory-list.component';
 import {ItemDetailComponent} from '../components/frame/details/item-detail/item-detail.component';
+import {LentsListComponent} from '../components/frame/list/lents-list/lents-list.component';
+import {LentDetailComponent} from '../components/frame/details/lent-detail/lent-detail.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
@@ -12,7 +14,9 @@ const routes: Routes = [
   {path: 'members', component: MembersListComponent},
   {path: 'member/:id', component: MemberDetailsComponent},
   {path: 'inventory', component: InventoryListComponent},
-  {path: 'item/:id', component: ItemDetailComponent}
+  {path: 'item/:id', component: ItemDetailComponent},
+  {path: 'lents', component: LentsListComponent},
+  {path: 'lent/:id', component: LentDetailComponent}
 ];
 
 @NgModule({

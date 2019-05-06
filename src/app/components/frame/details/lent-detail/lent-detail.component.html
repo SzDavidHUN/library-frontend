@@ -1,0 +1,101 @@
+<div class="row">
+  <div class="col-9">
+    <div [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode" class="card">
+      <div class="card-header"><b>Lent</b></div>
+      <div class="card-body">
+        <table>
+          <tr>
+            <td><b>ID:</b></td>
+            <td>{{lent.id}}</td>
+          </tr>
+          <tr>
+            <td><b>Date:</b></td>
+            <td>{{lent.date | date: 'yyyy. MM. dd.'}} ({{((currDate.valueOf() - lent.date) / 86400000).toFixed(0)}} days
+              ago)
+            </td>
+          </tr>
+          <tr>
+            <td><b>Status:</b></td>
+            <td>{{lent.status}}</td>
+          </tr>
+        </table>
+      </div>
+      <div class="card-footer"></div>
+    </div>
+    <br>
+    <div [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode" class="card">
+      <div class="card-header"><b>{{lent.item.type | titlecase}}: </b>{{lent.item.author}}: {{lent.item.title}}</div>
+      <div class="card-body">
+        <table>
+          <tr>
+            <td><b>ID:</b></td>
+            <td>{{lent.item.id}}</td>
+          </tr>
+          <tr>
+            <td><b>Title:</b></td>
+            <td>{{lent.item.title}}</td>
+          </tr>
+          <tr>
+            <td><b>Author:</b></td>
+            <td>{{lent.item.author}}</td>
+          </tr>
+          <tr>
+            <td><b>Type:</b></td>
+            <td>{{lent.item.type}}</td>
+          </tr>
+          <tr>
+            <td><b>Date:</b></td>
+            <td>{{lent.item.date}}</td>
+          </tr>
+          <tr>
+            <td><b>Status:</b></td>
+            <td>{{lent.item.status | titlecase}}</td>
+          </tr>
+        </table>
+      </div>
+      <div class="card-footer"></div>
+    </div>
+    <br>
+    <div [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode" class="card">
+      <div class="card-header"><b>Member: </b>{{lent.member.name}}</div>
+      <div class="card-body">
+        <table>
+          <tr>
+            <td><b>ID:</b></td>
+            <td>{{lent.member.id}}</td>
+          </tr>
+          <tr>
+            <td><b>Name:</b></td>
+            <td>{{lent.member.name}}</td>
+          </tr>
+          <tr>
+            <td><b>Phone number:</b></td>
+            <td>{{lent.member.phone}}</td>
+          </tr>
+          <tr>
+            <td><b>Address:</b></td>
+            <td>{{lent.member.address}}</td>
+          </tr>
+          <tr>
+            <td><b>Personal Identification Cards Number:</b></td>
+            <td>{{lent.member.picn}}</td>
+          </tr>
+          <tr>
+            <td><b>Status:</b></td>
+            <td>{{lent.member.status | titlecase}}</td>
+          </tr>
+        </table>
+      </div>
+      <div class="card-footer"></div>
+    </div>
+  </div>
+  <div class="col-3">
+    <div [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode" class="card">
+      <div class="card-header font-weight-bold">Manage lent</div>
+      <div class="card-body">
+        <button [class.disabled]="lent.status != 'Active'" class="btn btn-block btn-outline-primary">Unlent</button>
+      </div>
+      <div class="card-footer"></div>
+    </div>
+  </div>
+</div>
