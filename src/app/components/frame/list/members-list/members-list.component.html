@@ -24,7 +24,9 @@
             <td class="align-middle" style="width: 16%"><a class="btn btn-block btn-outline-secondary"
                                                            routerLink="/member/edit/{{member.id}}">Edit</a></td>
             <td class="align-middle" style="width: 16%">
-              <button (click)="removeMember(member.id)" class="btn btn-block btn-outline-danger">Remove</button>
+              <button (click)="removeMember(member.id)" [class.disabled]="member.status === 'Removed'"
+                      class="btn btn-block btn-outline-danger">Remove
+              </button>
             </td>
           </tr>
           </tbody>
@@ -35,9 +37,23 @@
   </div>
   <div class="col-3">
     <div [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode" class="card">
+      <div class="card-header font-weight-bold">Filter</div>
+      <div class="card-body">
+        <label for="nameBox">Name:</label>
+        <input (input)="updateFilter()" [(ngModel)]="name" class="form-control" id="nameBox" placeholder="Name"
+               type="text">
+        <br>
+        <button (click)="changeRemoved()" [class.active]="showRemoved" [class.btn-outline-danger]="!showRemoved"
+                [class.btn-outline-success]="showRemoved" class="btn btn-block">Show removed
+        </button>
+      </div>
+      <div class="card-footer"></div>
+    </div>
+    <br>
+    <div [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode" class="card">
       <div class="card-header font-weight-bold">Manage members</div>
       <div class="card-body">
-        <button class="btn btn-block btn-outline-success">Create new member</button>
+        <button class="btn btn-block btn-outline-success" routerLink="/member/edit/new">New member</button>
       </div>
       <div class="card-footer"></div>
     </div>

@@ -10,7 +10,10 @@ import {GlobalSettings} from '../../../../models/globalSettings';
 })
 export class MembersListComponent implements OnInit {
 
+  allMembers: Member[];
   members: Member[];
+  name: string;
+  showRemoved: boolean;
 
   constructor(
     private memberService: MemberService,
@@ -23,9 +26,25 @@ export class MembersListComponent implements OnInit {
   }
 
   getMembers(): void {
-    this.memberService.getMembers().subscribe((members: Member[]) => this.members = members);
+    this.name = '';
+    this.showRemoved = false;
+    this.memberService.getMembers().subscribe((members: Member[]) => this.allMembers = members, () => {
+    }, () => this.members = this.allMembers);
   }
 
   removeMember(id: number): void {
+    this.memberService.removeMemberSync(id);
+  }
+
+  updateFilter(): void {
+    this.members = this.allMembers.filter((member: Member) => {
+      return (this.name === '' ? true : member.name.includes(this.name)) &&
+        (this.showRemoved ? true : member.status !== 'Removed');
+    });
+  }
+
+  changeRemoved(): void {
+    this.showRemoved = !this.showRemoved;
+    this.updateFilter();
   }
 }

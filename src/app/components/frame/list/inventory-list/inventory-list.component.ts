@@ -15,6 +15,8 @@ export class InventoryListComponent implements OnInit {
   showDiscarded: boolean;
   showAvailable = true;
   showLented: boolean;
+  titleFilter: string;
+  authorFilter: string;
 
   constructor(
     private inventoryService: InventoryService,
@@ -24,6 +26,8 @@ export class InventoryListComponent implements OnInit {
 
   ngOnInit() {
     this.getItems();
+    this.titleFilter = '';
+    this.authorFilter = '';
   }
 
   getItems(): void {
@@ -51,13 +55,16 @@ export class InventoryListComponent implements OnInit {
 
   updateFilter(): void {
     this.items = this.allItems.filter((item: Item) => {
-      return (this.showAvailable ? item.status === 'In' : false) ||
+      return (
+        (this.titleFilter === '' ? true : item.title.includes(this.titleFilter)) &&
+        (this.authorFilter === '' ? true : item.author.includes(this.authorFilter))
+      ) && ((this.showAvailable ? item.status === 'In' : false) ||
         (this.showLented ? item.status === 'Out' : false) ||
-        (this.showDiscarded ? item.status === 'Discarded' : false);
+        (this.showDiscarded ? item.status === 'Discarded' : false));
     });
   }
 
   discardItem(id: number) {
-
+    this.inventoryService.discardItemSync(id);
   }
 }
