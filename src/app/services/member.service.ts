@@ -22,4 +22,21 @@ export class MemberService {
   getMember(id: number): Observable<Member> {
     return this.http.get<Member>(this.apiUrl + id.toString());
   }
+
+  saveMemberObservable(member: Member): Observable<object> {
+    return this.http.put(this.apiUrl + member.id, member);
+  }
+
+  saveMemberSync(member: Member): void {
+    this.saveMemberObservable(member).subscribe();
+  }
+
+
+  removeMemberSync(id: number): void {
+    this.getMember(id).subscribe((member: Member) => {
+      member.status = 'Removed';
+      this.saveMemberSync(member);
+    });
+  }
+
 }

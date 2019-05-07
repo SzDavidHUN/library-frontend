@@ -27,7 +27,9 @@ import {ItemEditComponent} from './components/frame/edit/item-edit/item-edit.com
     InventoryListComponent,
     ItemDetailComponent,
     LentsListComponent,
-    LentDetailComponent
+    LentDetailComponent,
+    MemberEditComponent,
+    ItemEditComponent
   ],
   imports: [
     AppRoutingModule,

@@ -1,0 +1,77 @@
+<div class="row">
+  <div class="col-9">
+    <div [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode" class="card">
+      <div class="card-header"><b>Member: </b>{{member.name}}</div>
+      <div class="card-body">
+        <form>
+          <div [hidden]="new" class="form-group">
+            <label for="idBox">ID:</label>
+            <input [(ngModel)]="member.id" aria-describedby="idBoxHelp" class="form-control form-control-lg disabled"
+                   disabled
+                   id="idBox" name="idBox" placeholder="ID of the member"
+                   type="number">
+            <small class="form-text text-muted" id="idBoxHelp">The Identification number (ID) for the
+              member. It is automatically assigned, and cannot be modified.
+            </small>
+          </div>
+          <div class="form-group">
+            <label for="nameBox">Name:</label>
+            <input [(ngModel)]="member.name" aria-describedby="nameBoxHelp" class="form-control form-control-lg"
+                   id="nameBox"
+                   name="nameBox" placeholder="Name of the member"
+                   type="text">
+            <small class="form-text text-muted" id="nameBoxHelp">The real name of the member.</small>
+          </div>
+          <div class="form-group">
+            <label for="addressBox">Address:</label>
+            <input [(ngModel)]="member.address" aria-describedby="addressBoxHelp" class="form-control"
+                   id="addressBox" name="addressBox"
+                   placeholder="Address eg: 3600 Ózd, Sintér straße 26." type="text">
+            <small class="form-text text-muted" id="addressBoxHelp">The address of the member.</small>
+          </div>
+          <div class="form-group">
+            <label for="phoneBox">Phone number:</label>
+            <input [(ngModel)]="member.phone" aria-describedby="phoneBoxHelp" class="form-control" id="phoneBox"
+                   name="phoneBox" placeholder="Phone number eg: +36 30 123 4567" type="tel">
+            <small class="form-text text-muted" id="phoneBoxHelp">The telephone number of the member.
+            </small>
+          </div>
+          <div class="form-group">
+            <label for="picnBox">Personal Identification Card Number:</label>
+            <input [(ngModel)]="member.picn" aria-describedby="picnBoxHelp" class="form-control" id="picnBox"
+                   name="picnBox" placeholder="PICN" type="text">
+            <small class="form-text text-muted" id="picnBoxHelp">The members persional identifications cards
+              identification number. (Required by the Department of Redundancy Department)
+            </small>
+          </div>
+          <input (click)="save()" class="btn btn-outline-primary" style="width: 73%" type="button"
+                 value="Save">
+          <button (click)="location.back()" class="btn btn-outline-warning"
+                  style="width: 24%; position: absolute; right: 1.5rem;">Cancel
+          </button>
+        </form>
+      </div>
+      <div class="card-footer"></div>
+    </div>
+  </div>
+  <div class="col-3">
+    <div [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode" class="card">
+      <div class="card-header font-weight-bold">Manage lents</div>
+      <div class="card-body">
+        <button class="btn btn-block btn-outline-success">New lent</button>
+        <button class="btn btn-block btn-outline-primary">Check lents</button>
+      </div>
+      <div class="card-footer"></div>
+    </div>
+    <br/>
+    <div *ngIf="!new" [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode"
+         class="card">
+      <div class="card-header font-weight-bold">Manage member</div>
+      <div class="card-body">
+        <button class="btn btn-block btn-outline-success" routerLink="/member/edit/new">New member</button>
+        <button class="btn btn-block btn-outline-danger">Remove member</button>
+      </div>
+      <div class="card-footer"></div>
+    </div>
+  </div>
+</div>

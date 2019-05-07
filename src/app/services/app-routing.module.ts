@@ -7,12 +7,14 @@ import {InventoryListComponent} from '../components/frame/list/inventory-list/in
 import {ItemDetailComponent} from '../components/frame/details/item-detail/item-detail.component';
 import {LentsListComponent} from '../components/frame/list/lents-list/lents-list.component';
 import {LentDetailComponent} from '../components/frame/details/lent-detail/lent-detail.component';
+import {MemberEditComponent} from '../components/frame/edit/member-edit/member-edit.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
   {path: 'dashboard', component: HomepageComponent},
   {path: 'members', component: MembersListComponent},
   {path: 'member/:id', component: MemberDetailsComponent},
+  {path: 'member/edit/:id', component: MemberEditComponent},
   {path: 'inventory', component: InventoryListComponent},
   {path: 'item/:id', component: ItemDetailComponent},
   {path: 'lents', component: LentsListComponent},

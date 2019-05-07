@@ -44,10 +44,10 @@
     </div>
     <br/>
     <div [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode" class="card">
-      <div class="card-header font-weight-bold">Manage members</div>
+      <div class="card-header font-weight-bold">Manage member</div>
       <div class="card-body">
-        <button class="btn btn-block btn-outline-success">Create new member</button>
-        <button class="btn btn-block btn-outline-primary">Edit member</button>
+        <button class="btn btn-block btn-outline-success" routerLink="/member/edit/new">New member</button>
+        <button class="btn btn-block btn-outline-primary" routerLink="/member/edit/{{member.id}}">Edit member</button>
         <button class="btn btn-block btn-outline-danger">Remove member</button>
       </div>
       <div class="card-footer"></div>
