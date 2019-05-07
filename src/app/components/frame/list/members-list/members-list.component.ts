@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {MemberService} from '../../../../services/member.service';
 import {Member} from '../../../../models/member';
-import {GlobalSettings} from '../../../../models/GlobalSettings';
+import {GlobalSettings} from '../../../../models/globalSettings';
 
 @Component({
   selector: 'app-members-list',

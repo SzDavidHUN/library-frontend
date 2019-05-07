@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {InventoryService} from '../../../../services/inventory.service';
 import {Item} from '../../../../models/item';
-import {GlobalSettings} from '../../../../models/GlobalSettings';
+import {GlobalSettings} from '../../../../models/globalSettings';
 
 @Component({
   selector: 'app-inventory-list',

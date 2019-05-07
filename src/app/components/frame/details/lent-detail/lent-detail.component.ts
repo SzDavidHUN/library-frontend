@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {LentService} from '../../../../services/lent.service';
-import {GlobalSettings} from '../../../../models/GlobalSettings';
+import {GlobalSettings} from '../../../../models/globalSettings';
 import {Lent} from '../../../../models/lent';
 import {ActivatedRoute} from '@angular/router';
 import {LentObservable} from '../../../../models/lentObservable';

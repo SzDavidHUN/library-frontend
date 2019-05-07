@@ -1,5 +1,5 @@
 import {Component} from '@angular/core';
-import {GlobalSettings} from './models/GlobalSettings';
+import {GlobalSettings} from './models/globalSettings';
 
 @Component({
   selector: 'app-root',

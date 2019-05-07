@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {GlobalSettings} from '../../../../models/GlobalSettings';
+import {GlobalSettings} from '../../../../models/globalSettings';
 import {Lent} from '../../../../models/lent';
 import {LentService} from '../../../../services/lent.service';
 import {LentObservable} from '../../../../models/lentObservable';

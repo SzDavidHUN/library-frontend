@@ -10,10 +10,12 @@ import {HttpClientModule} from '@angular/common/http';
 import {MemberDetailsComponent} from './components/frame/details/member-details/member-details.component';
 import {InventoryListComponent} from './components/frame/list/inventory-list/inventory-list.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {GlobalSettings} from './models/GlobalSettings';
+import {GlobalSettings} from './models/globalSettings';
 import {ItemDetailComponent} from './components/frame/details/item-detail/item-detail.component';
 import {LentsListComponent} from './components/frame/list/lents-list/lents-list.component';
 import {LentDetailComponent} from './components/frame/details/lent-detail/lent-detail.component';
+import {MemberEditComponent} from './components/frame/edit/member-edit/member-edit.component';
+import {ItemEditComponent} from './components/frame/edit/item-edit/item-edit.component';
 
 @NgModule({
   declarations: [

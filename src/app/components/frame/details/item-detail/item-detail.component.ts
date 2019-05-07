@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {InventoryService} from '../../../../services/inventory.service';
-import {GlobalSettings} from '../../../../models/GlobalSettings';
+import {GlobalSettings} from '../../../../models/globalSettings';
 import {ActivatedRoute} from '@angular/router';
 import {Item} from '../../../../models/item';
 
