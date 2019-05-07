@@ -1,0 +1,85 @@
+<div class="row">
+  <div class="col-9">
+    <div [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode" class="card">
+      <div class="card-header"><b>{{item.type | titlecase }}: </b>{{item.author}}: {{item.title}}</div>
+      <div class="card-body">
+        <form>
+          <div *ngIf="!new" class="form-group">
+            <label for="itBox">ID:</label>
+            <input [(ngModel)]="item.id" aria-describedby="itBoxHelp" class="form-control form-control-lg disabled"
+                   disabled
+                   id="itBox" name="itBox" placeholder="ID" type="text">
+            <small class="form-text text-muted" id="itBoxHelp">The Identification number (ID) of the item.
+              It is automatically assigned, and cannot be modified.
+            </small>
+          </div>
+          <div class="form-group">
+            <label for="titleBox">Title:</label>
+            <input [(ngModel)]="item.title" aria-describedby="titleBoxHelp" class="form-control form-control-lg"
+                   id="titleBox"
+                   name="titleBox" placeholder="Eg: Inceptiom" type="text">
+            <small class="form-text text-muted" id="titleBoxHelp">The title of the item</small>
+          </div>
+          <div class="form-group">
+            <label for="authorBox">Author:</label>
+            <input [(ngModel)]="item.author" aria-describedby="authorBoxHelp" class="form-control"
+                   id="authorBox" name="authorBox" placeholder="Eg: asd" type="text">
+            <small class="form-text text-muted" id="authorBoxHelp">The author(s) of the item</small>
+          </div>
+          <div class="form-group">
+            <label for="typeBox">Type:</label>
+            <input [(ngModel)]="item.type" aria-describedby="typeBoxHelp" class="form-control" id="typeBox"
+                   name="typeBox" placeholder="Eg: book, CD, etc" type="tel">
+            <small class="form-text text-muted" id="typeBoxHelp">The type of the item</small>
+          </div>
+          <div class="form-group">
+            <label for="dateBox">Date:</label>
+            <div class="input-group">
+              <input [(ngModel)]="item.date" aria-describedby="dateBoxHelp" class="form-control" id="dateBox"
+                     name="dateBox" placeholder="Eg: {{currDate | date: 'yyyy. MM. dd.'}}" type="tel">
+              <div class="input-group-append">
+                <button (click)="setCurrentDate()" class="btn btn-outline-secondary">Current date</button>
+              </div>
+            </div>
+            <small class="form-text text-muted" id="dateBoxHelp">The date of purchase of the item</small>
+          </div>
+          <div class="form-group">
+            <label for="statusBox">Status:</label>
+            <input [(ngModel)]="item.status" aria-describedby="statusBoxHelp" class="form-control"
+                   id="statusBox" name="statusBox" placeholder="In/Out/Discarded"
+                   type="text">
+            <small class="form-text text-muted" id="statusBoxHelp">The members persional identifications
+              cards identification number. (Required by the Department of Redundancy Department)
+            </small>
+          </div>
+          <input (click)="saveItem()" class="btn btn-outline-primary" style="width: 73%" type="button"
+                 value="Save">
+          <button (click)="location.back()" class="btn btn-outline-warning"
+                  style="width: 24%; position: absolute; right: 1.5rem;">Cancel
+          </button>
+        </form>
+      </div>
+      <div class="card-footer"></div>
+    </div>
+  </div>
+  <div class="col-3">
+    <div [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode" class="card">
+      <div class="card-header font-weight-bold">Manage lents</div>
+      <div class="card-body">
+        <button class="btn btn-block btn-outline-success">New lent</button>
+        <button class="btn btn-block btn-outline-primary">Check lents</button>
+      </div>
+      <div class="card-footer"></div>
+    </div>
+    <br/>
+    <div *ngIf="!new" [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode"
+         class="card">
+      <div class="card-header font-weight-bold">Manage member</div>
+      <div class="card-body">
+        <button class="btn btn-block btn-outline-success" routerLink="/member/edit/new">New member</button>
+        <button class="btn btn-block btn-outline-danger">Remove member</button>
+      </div>
+      <div class="card-footer"></div>
+    </div>
+  </div>
+</div>

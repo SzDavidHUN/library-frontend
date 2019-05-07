@@ -58,7 +58,7 @@
     <div [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode" class="card">
       <div class="card-header font-weight-bold">Manage {{item.type}}</div>
       <div class="card-body">
-        <button class="btn btn-block btn-outline-primary">Edit item</button>
+        <button class="btn btn-block btn-outline-primary" routerLink="/item/edit/{{item.id}}">Edit item</button>
         <button class="btn btn-block btn-outline-danger">Remove item</button>
       </div>
       <div class="card-footer"></div>
@@ -67,7 +67,7 @@
     <div [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode" class="card">
       <div class="card-header font-weight-bold">Manage inventory</div>
       <div class="card-body">
-        <button class="btn btn-block btn-outline-success">New item</button>
+        <button class="btn btn-block btn-outline-success" routerLink="/item/edit/new">New item</button>
       </div>
       <div class="card-footer"></div>
     </div>

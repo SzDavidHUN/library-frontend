@@ -8,6 +8,7 @@ import {ItemDetailComponent} from '../components/frame/details/item-detail/item-
 import {LentsListComponent} from '../components/frame/list/lents-list/lents-list.component';
 import {LentDetailComponent} from '../components/frame/details/lent-detail/lent-detail.component';
 import {MemberEditComponent} from '../components/frame/edit/member-edit/member-edit.component';
+import {ItemEditComponent} from '../components/frame/edit/item-edit/item-edit.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
@@ -17,6 +18,7 @@ const routes: Routes = [
   {path: 'member/edit/:id', component: MemberEditComponent},
   {path: 'inventory', component: InventoryListComponent},
   {path: 'item/:id', component: ItemDetailComponent},
+  {path: 'item/edit/:id', component: ItemEditComponent},
   {path: 'lents', component: LentsListComponent},
   {path: 'lent/:id', component: LentDetailComponent}
 ];
