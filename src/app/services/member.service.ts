@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {Observable} from 'rxjs';
 import {Member} from '../models/member';
 import {HttpClient} from '@angular/common/http';
+import {Lent} from '../models/lent';
 
 @Injectable({
   providedIn: 'root'
@@ -39,4 +40,17 @@ export class MemberService {
     });
   }
 
+  getEmptyMember(): Member {
+    return {id: -1, name: '', address: '', phone: '', picn: '', status: 'active', lents: []};
+  }
+
+  addLent(member: Member, lent: Lent): void {
+    member.lents.push(lent.id);
+    this.saveMemberSync(member);
+  }
+
+  removeLent(lent: Lent) {
+    lent.member.lents.splice(lent.member.lents.indexOf(lent.id), 1);
+    this.saveMemberSync(lent.member);
+  }
 }

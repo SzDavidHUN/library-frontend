@@ -5,4 +5,5 @@ export class Member {
   address: string;
   picn: string;
   status: string;
+  lents: number[];
 }

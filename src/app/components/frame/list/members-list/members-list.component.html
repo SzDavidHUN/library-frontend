@@ -11,20 +11,16 @@
             <th>Name</th>
             <th></th>
             <th></th>
-            <th></th>
           </tr>
           </thead>
           <tbody>
           <tr *ngFor="let member of members" routerLink="/member/{{member.id}}">
             <td class="align-middle text-center">{{member.id}}</td>
             <td class="align-middle"><span class="font-weight-bold">{{member.name}}</span><br>{{member.address}}</td>
-            <td class="align-middle" style="width: 16%">
-              <button class="btn btn-block btn-outline-secondary">Lents</button>
-            </td>
             <td class="align-middle" style="width: 16%"><a class="btn btn-block btn-outline-secondary"
                                                            routerLink="/member/edit/{{member.id}}">Edit</a></td>
             <td class="align-middle" style="width: 16%">
-              <button (click)="removeMember(member.id)" [class.disabled]="member.status === 'Removed'"
+              <button (click)="removeMember(member.id)" *ngIf="member.status !== 'Removed'"
                       class="btn btn-block btn-outline-danger">Remove
               </button>
             </td>

@@ -29,7 +29,7 @@ export class MembersListComponent implements OnInit {
     this.name = '';
     this.showRemoved = false;
     this.memberService.getMembers().subscribe((members: Member[]) => this.allMembers = members, () => {
-    }, () => this.members = this.allMembers);
+    }, () => this.updateFilter());
   }
 
   removeMember(id: number): void {

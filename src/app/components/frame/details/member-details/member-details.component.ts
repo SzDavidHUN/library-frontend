@@ -3,6 +3,11 @@ import {MemberService} from '../../../../services/member.service';
 import {ActivatedRoute} from '@angular/router';
 import {Member} from '../../../../models/member';
 import {GlobalSettings} from '../../../../models/globalSettings';
+import {Item} from '../../../../models/item';
+import {InventoryService} from '../../../../services/inventory.service';
+import {LentService} from '../../../../services/lent.service';
+import {Lent} from '../../../../models/lent';
+import {LentObservable} from '../../../../models/lentObservable';
 
 @Component({
   selector: 'app-member-details',
@@ -12,11 +17,14 @@ import {GlobalSettings} from '../../../../models/globalSettings';
 export class MemberDetailsComponent implements OnInit {
 
   member: Member;
+  lents: Lent[] = [];
 
   constructor(
     private memberService: MemberService,
+    private inventoryService: InventoryService,
     private activatedRoute: ActivatedRoute,
-    private globalSettings: GlobalSettings
+    private globalSettings: GlobalSettings,
+    private lentService: LentService
   ) {
   }
 
@@ -25,7 +33,16 @@ export class MemberDetailsComponent implements OnInit {
   }
 
   getMember(): void {
-    this.memberService.getMember(+this.activatedRoute.snapshot.paramMap.get('id')).subscribe((member: Member) => this.member = member);
+    this.memberService.getMember(+this.activatedRoute.snapshot.paramMap.get('id')).subscribe((member: Member) => {
+      this.member = member;
+      this.member.lents.forEach((id: number) => {
+        this.lentService.getLent(id).subscribe((lentObservable: LentObservable) => {
+          let lent: Lent = this.lentService.toLent(lentObservable);
+          lentObservable.item.subscribe((item: Item) => lent.item = item);
+          this.lents.push(lent);
+        });
+      });
+    });
   }
 
 }

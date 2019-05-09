@@ -32,13 +32,49 @@
       </div>
       <div class="card-footer"></div>
     </div>
+    <br/>
+    <div *ngIf="member.lents.length > 0" [class.bg-dark]="globalSettings.darkmode"
+         [class.text-light]="globalSettings.darkmode"
+         class="card">
+      <div class="card-header">Lents ({{member.lents.length}})</div>
+      <div class="card-body">
+        <div *ngFor="let lent of lents" class="card">
+          <div class="card-header font-weight-bold">{{lent.item.title}}</div>
+          <div class="card-body">
+            <table>
+              <tr>
+                <td>Lent ID:</td>
+                <td>{{lent.id}}</td>
+              </tr>
+              <tr>
+                <td>Item ID:</td>
+                <td>{{lent.item.id}}</td>
+              </tr>
+              <tr>
+                <td>Title:</td>
+                <td>{{lent.item.title}}</td>
+              </tr>
+              <tr>
+                <td>Author:</td>
+                <td>{{lent.item.author}}</td>
+              </tr>
+              <tr>
+                <td>Lented:</td>
+                <td>{{lent.date | date: 'yyyy. MM. dd.'}}</td>
+              </tr>
+            </table>
+          </div>
+          <div class="card-footer"></div>
+        </div>
+      </div>
+      <div class="card-footer"></div>
+    </div>
   </div>
   <div class="col-3">
     <div [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode" class="card">
       <div class="card-header font-weight-bold">Manage lents</div>
       <div class="card-body">
         <button class="btn btn-block btn-outline-success">New lent</button>
-        <button class="btn btn-block btn-outline-primary">Check lents</button>
       </div>
       <div class="card-footer"></div>
     </div>
