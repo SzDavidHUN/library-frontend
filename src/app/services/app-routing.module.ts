@@ -9,6 +9,7 @@ import {LentsListComponent} from '../components/frame/list/lents-list/lents-list
 import {LentDetailComponent} from '../components/frame/details/lent-detail/lent-detail.component';
 import {MemberEditComponent} from '../components/frame/edit/member-edit/member-edit.component';
 import {ItemEditComponent} from '../components/frame/edit/item-edit/item-edit.component';
+import {LentEditComponent} from '../components/frame/edit/lent-edit/lent-edit.component';
 
 const routes: Routes = [
   {path: '', redirectTo: '/dashboard', pathMatch: 'full'},
@@ -20,6 +21,7 @@ const routes: Routes = [
   {path: 'item/:id', component: ItemDetailComponent},
   {path: 'item/edit/:id', component: ItemEditComponent},
   {path: 'lents', component: LentsListComponent},
+  {path: 'lent/new', component: LentEditComponent},
   {path: 'lent/:id', component: LentDetailComponent}
 ];
 

@@ -1,0 +1,171 @@
+<div class="row">
+  <div class="col-9">
+    <div [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode" class="card">
+      <div class="card-header font-weight-bold">
+        <div *ngIf="!selectedMember">Select member</div>
+        <div *ngIf="selectedMember">
+          Selected member: {{selectedMember.name}}
+          <button (click)="unselectMember()" class="btn btn-sm btn-outline-primary float-right">Unselect</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div *ngIf="!selectedMember" class="d-flex flex-wrap flex-row">
+          <div *ngFor="let member of members" class="card m-1" style="width: 32%;">
+            <div class="card-header font-weight-bold">{{member.name}}
+              <button (click)="selectMember(member)" *ngIf="member.lents.length < 3"
+                      class="btn btn-sm btn-outline-success float-right">Select
+              </button>
+              <button *ngIf="member.lents.length >= 3" class="btn btn-sm btn-outline-danger float-right disabled">Too
+                much lent
+              </button>
+            </div>
+            <div class="card-body">
+              <table>
+                <tr>
+                  <td>ID:</td>
+                  <td>{{member.id}}</td>
+                </tr>
+                <tr>
+                  <td>Name:</td>
+                  <td>{{member.name}}</td>
+                </tr>
+                <tr>
+                  <td>Lents:</td>
+                  <td>{{member.lents.length}}</td>
+                </tr>
+              </table>
+            </div>
+            <div class="card-footer"></div>
+          </div>
+        </div>
+        <div *ngIf="selectedMember">
+          <table>
+            <tr>
+              <td><b>ID:</b></td>
+              <td>{{selectedMember.id}}</td>
+            </tr>
+            <tr>
+              <td><b>Name:</b></td>
+              <td>{{selectedMember.name}}</td>
+            </tr>
+            <tr>
+              <td><b>Phone number:</b></td>
+              <td>{{selectedMember.phone}}</td>
+            </tr>
+            <tr>
+              <td><b>Address:</b></td>
+              <td>{{selectedMember.address}}</td>
+            </tr>
+            <tr>
+              <td><b>Personal Identification Cards Number:</b></td>
+              <td>{{selectedMember.picn}}</td>
+            </tr>
+            <tr>
+              <td><b>Status:</b></td>
+              <td>{{selectedMember.status | titlecase}}</td>
+            </tr>
+            <tr>
+              <td><b>Number of lents:</b></td>
+              <td>{{selectedMember.lents.length}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="card-footer"></div>
+    </div>
+    <br/>
+    <div [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode" class="card">
+      <div class="card-header font-weight-bold">
+        <div *ngIf="!selectedItem">Select item</div>
+        <div *ngIf="selectedItem">
+          Selected {{selectedItem.type}}: {{selectedItem.author}}: {{selectedItem.title}}
+          <button (click)="unselectItem()" class="btn btn-sm btn-outline-primary float-right">Unselect</button>
+        </div>
+      </div>
+      <div class="card-body">
+        <div *ngIf="!selectedItem" class="d-flex flex-wrap flex-row">
+          <div *ngFor="let item of items" class="card m-1" style="width: 32%;">
+            <div class="card-header font-weight-bold">{{item.title}}
+              <button (click)="selectItem(item)" class="btn btn-sm btn-outline-success float-right">Select</button>
+            </div>
+            <div class="card-body">
+              <table>
+                <tr>
+                  <td>ID:</td>
+                  <td>{{item.id}}</td>
+                </tr>
+                <tr>
+                  <td>Title:</td>
+                  <td>{{item.title}}</td>
+                </tr>
+                <tr>
+                  <td>Author:</td>
+                  <td>{{item.author}}</td>
+                </tr>
+              </table>
+            </div>
+            <div class="card-footer"></div>
+          </div>
+        </div>
+        <div *ngIf="selectedItem">
+          <table>
+            <tr>
+              <td><b>ID:</b></td>
+              <td>{{selectedItem.id}}</td>
+            </tr>
+            <tr>
+              <td><b>Title:</b></td>
+              <td>{{selectedItem.title}}</td>
+            </tr>
+            <tr>
+              <td><b>Author:</b></td>
+              <td>{{selectedItem.author}}</td>
+            </tr>
+            <tr>
+              <td><b>Type:</b></td>
+              <td>{{selectedItem.type}}</td>
+            </tr>
+            <tr>
+              <td><b>Date:</b></td>
+              <td>{{selectedItem.date}}</td>
+            </tr>
+            <tr>
+              <td><b>Status:</b></td>
+              <td>{{selectedItem.status | titlecase}}</td>
+            </tr>
+          </table>
+        </div>
+      </div>
+      <div class="card-footer"></div>
+    </div>
+    <br/>
+    <div *ngIf="selectedItem && selectedMember" class="card">
+      <div class="card-header font-weight-bold">Save lent</div>
+      <div class="card-body">
+        <input (click)="save()" class="btn btn-outline-primary" style="width: 73%" type="button"
+               value="Save">
+        <button (click)="location.back()" class="btn btn-outline-warning"
+                style="width: 24%; position: absolute; right: 1.5rem;">Cancel
+        </button>
+      </div>
+      <div class="card-footer"></div>
+    </div>
+  </div>
+  <div class="col-3">
+    <div [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode" class="card">
+      <div class="card-header font-weight-bold">Filter settings</div>
+      <div class="card-body">
+
+      </div>
+      <div class="card-footer"></div>
+    </div>
+    <br/>
+    <div [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode" class="card">
+      <div class="card-header font-weight-bold">Manage inventory</div>
+      <div class="card-body">
+        <button class="btn btn-block btn-outline-success" routerLink="/item/edit/new">New item</button>
+      </div>
+      <div class="card-footer"></div>
+    </div>
+  </div>
+</div>

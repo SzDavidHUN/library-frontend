@@ -20,6 +20,10 @@ export class MemberService {
     return this.http.get<Member[]>(this.apiUrl);
   }
 
+  getActiveMembers(): Observable<Member[]> {
+    return this.http.get<Member[]>(this.apiUrl + 'all/status/active');
+  }
+
   getMember(id: number): Observable<Member> {
     return this.http.get<Member>(this.apiUrl + id.toString());
   }

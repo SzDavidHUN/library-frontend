@@ -27,7 +27,7 @@ export class LentService {
     let observableLentObservable: Observable<LentObservable>;
     observableLentObservable = new Observable<LentObservable>((observer) => {
       this.httpClient.get<LentRaw>(this.apiUrl + customUrlExtension).subscribe((lentRaw: LentRaw) => {
-        observer.next(this.toLent(lentRaw));
+        observer.next(this.toLentObservable(lentRaw));
         observer.complete();
       });
     });
@@ -58,14 +58,14 @@ export class LentService {
     let observableLentObservable: Observable<LentObservable>;
     observableLentObservable = new Observable<LentObservable>((observer) => {
       this.httpClient.get<LentRaw>(this.apiUrl + id).subscribe((lentRaw: LentRaw) => {
-        observer.next(this.toLent(lentRaw));
+        observer.next(this.toLentObservable(lentRaw));
         observer.complete();
       });
     });
     return observableLentObservable;
   }
 
-  toLent(lentraw: LentRaw): LentObservable {
+  toLentObservable(lentraw: LentRaw): LentObservable {
     return {
       id: lentraw.id,
       item: this.inventoryService.getItem(lentraw.item),
@@ -75,9 +75,19 @@ export class LentService {
     };
   }
 
+  toLent(lentObservable: LentObservable): Lent {
+    return {
+      id: lentObservable.id,
+      status: lentObservable.status,
+      item: this.inventoryService.getEmptyItem(),
+      member: this.memberService.getEmptyMember(),
+      date: lentObservable.date
+    };
+  }
+
   toLents(lentraws: LentRaw[]): LentObservable[] {
     const lents: LentObservable[] = [];
-    lentraws.forEach((lentraw: LentRaw) => lents.push(this.toLent(lentraw)));
+    lentraws.forEach((lentraw: LentRaw) => lents.push(this.toLentObservable(lentraw)));
     return lents;
   }
 
@@ -94,7 +104,7 @@ export class LentService {
     return this.getLentCustom('all/item/' + id.toString());
   }
 
-  saveLentAsync(lent: Lent): Observable<object> {
+  saveLentAsync(lent: Lent): Observable<LentRaw> {
     const lentRaw: LentRaw = {
       id: lent.id,
       member: lent.member.id,
@@ -102,7 +112,7 @@ export class LentService {
       date: lent.date.toUTCString(),
       status: lent.status
     };
-    return this.httpClient.put(this.apiUrl + lent.id.toString(), lentRaw);
+    return this.httpClient.put<LentRaw>(this.apiUrl + lent.id.toString(), lentRaw);
   }
 
   saveLentSync(lent: Lent): void {
@@ -110,19 +120,24 @@ export class LentService {
   }
 
   saveNewLentSync(member: Member, item: Item): void {
-    this.saveLentSync({
+    const lent: Lent = {
       member,
       item,
       id: -1,
       date: new Date(),
       status: 'Active'
+    };
+    this.saveLentAsync(lent).subscribe((lentRaw: LentRaw) => {
+      lent.id = lentRaw.id;
+      this.inventoryService.lentItem(item);
+      this.memberService.addLent(member, lent);
     });
-    this.inventoryService.lentItem(item);
   }
 
   unlent(lent: Lent) {
     lent.status = 'Returned';
     this.saveLentSync(lent);
     this.inventoryService.unlentItem(lent.item);
+    this.memberService.removeLent(lent);
   }
 }
