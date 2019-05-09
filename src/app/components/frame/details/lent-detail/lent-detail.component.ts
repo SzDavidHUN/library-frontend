@@ -21,8 +21,7 @@ export class LentDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private lentService: LentService,
-    private globalSettings: GlobalSettings,
-    private memberService: MemberService
+    private globalSettings: GlobalSettings
   ) {
   }
 

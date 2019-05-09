@@ -20,8 +20,7 @@ export class LentsListComponent implements OnInit {
 
   constructor(
     private globalSettings: GlobalSettings,
-    private lentService: LentService,
-    private memberService: MemberService
+    private lentService: LentService
   ) {
   }
 
