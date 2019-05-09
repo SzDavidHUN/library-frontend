@@ -37,7 +37,7 @@ export class MemberDetailsComponent implements OnInit {
       this.member = member;
       this.member.lents.forEach((id: number) => {
         this.lentService.getLent(id).subscribe((lentObservable: LentObservable) => {
-          let lent: Lent = this.lentService.toLent(lentObservable);
+          const lent: Lent = LentService.toLent(lentObservable);
           lentObservable.item.subscribe((item: Item) => lent.item = item);
           this.lents.push(lent);
         });
