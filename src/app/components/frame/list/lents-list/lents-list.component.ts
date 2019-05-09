@@ -35,7 +35,7 @@ export class LentsListComponent implements OnInit {
           id: lentObservable.id,
           status: lentObservable.status,
           date: lentObservable.date,
-          member: this.memberService.getEmptyMember(),
+          member: MemberService.getEmptyMember(),
           item: {id: -1, title: '', author: '', status: '', type: '', date: ''}
         });
         lentObservable.member.subscribe((subscribedMember: Member) => this.lents[index].member = subscribedMember);

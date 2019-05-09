@@ -35,7 +35,7 @@ export class LentDetailComponent implements OnInit {
         id: lentObservable.id,
         date: lentObservable.date,
         status: lentObservable.status,
-        member: this.memberService.getEmptyMember(),
+        member: MemberService.getEmptyMember(),
         item: {id: -1, title: '', author: '', status: '', type: '', date: ''}
       };
       lentObservable.item.subscribe((item: Item) => this.lent.item = item);

@@ -14,13 +14,23 @@ import {Item} from '../models/item';
 })
 export class LentService {
 
-  private apiUrl = 'http://localhost:3000/db/lents/';
-
   constructor(
     private memberService: MemberService,
     private inventoryService: InventoryService,
     private httpClient: HttpClient
   ) {
+  }
+
+  private apiUrl = 'http://localhost:3000/db/lents/';
+
+  static toLent(lentObservable: LentObservable): Lent {
+    return {
+      id: lentObservable.id,
+      status: lentObservable.status,
+      item: InventoryService.getEmptyItem(),
+      member: MemberService.getEmptyMember(),
+      date: lentObservable.date
+    };
   }
 
   getLentCustom(customUrlExtension: string): Observable<LentObservable> {
@@ -72,16 +82,6 @@ export class LentService {
       member: this.memberService.getMember(lentraw.member),
       date: new Date(lentraw.date),
       status: lentraw.status
-    };
-  }
-
-  toLent(lentObservable: LentObservable): Lent {
-    return {
-      id: lentObservable.id,
-      status: lentObservable.status,
-      item: this.inventoryService.getEmptyItem(),
-      member: this.memberService.getEmptyMember(),
-      date: lentObservable.date
     };
   }
 

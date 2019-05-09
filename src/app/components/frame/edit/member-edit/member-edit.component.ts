@@ -27,7 +27,7 @@ export class MemberEditComponent implements OnInit {
   ngOnInit() {
     if (this.route.snapshot.paramMap.get('id') === 'new') {
       this.new = true;
-      this.member = this.memberService.getEmptyMember();
+      this.member = MemberService.getEmptyMember();
     } else {
       this.getMember();
       this.new = false;

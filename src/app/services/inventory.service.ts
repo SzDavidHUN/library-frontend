@@ -8,11 +8,22 @@ import {Item} from '../models/item';
 })
 export class InventoryService {
 
-  private apiUrl = 'http://localhost:3000/db/inventory/';
-
   constructor(
     private http: HttpClient
   ) {
+  }
+
+  private apiUrl = 'http://localhost:3000/db/inventory/';
+
+  static getEmptyItem(): Item {
+    return {
+      id: .1,
+      title: '',
+      author: '',
+      type: '',
+      status: '',
+      date: ''
+    };
   }
 
   getAllItems(): Observable<Item[]> {
@@ -51,16 +62,5 @@ export class InventoryService {
   unlentItem(item: Item): void {
     item.status = 'In';
     this.saveItemSync(item);
-  }
-
-  getEmptyItem(): Item {
-    return {
-      id: .1,
-      title: '',
-      author: '',
-      type: '',
-      status: '',
-      date: ''
-    };
   }
 }
