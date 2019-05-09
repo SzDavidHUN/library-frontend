@@ -5,6 +5,7 @@ import {InventoryService} from '../../../../services/inventory.service';
 import {LentService} from '../../../../services/lent.service';
 import {Member} from '../../../../models/member';
 import {Item} from '../../../../models/item';
+import {Location} from '@angular/common';
 
 @Component({
   selector: 'app-lent-edit',
@@ -23,7 +24,8 @@ export class LentEditComponent implements OnInit {
     private globalSettings: GlobalSettings,
     private memberService: MemberService,
     private inventoryService: InventoryService,
-    private lentService: LentService
+    private lentService: LentService,
+    private location: Location
   ) {
   }
 
