@@ -93,7 +93,9 @@
     <div [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode" class="card">
       <div class="card-header font-weight-bold">Manage lent</div>
       <div class="card-body">
-        <button [class.disabled]="lent.status != 'Active'" class="btn btn-block btn-outline-primary">Unlent</button>
+        <button (click)="unlent()" [class.disabled]="lent.status != 'Active'"
+                class="btn btn-block btn-outline-primary">Unlent
+        </button>
       </div>
       <div class="card-footer"></div>
     </div>

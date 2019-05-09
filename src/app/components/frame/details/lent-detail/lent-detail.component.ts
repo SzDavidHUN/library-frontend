@@ -6,6 +6,7 @@ import {ActivatedRoute} from '@angular/router';
 import {LentObservable} from '../../../../models/lentObservable';
 import {Item} from '../../../../models/item';
 import {Member} from '../../../../models/member';
+import {MemberService} from '../../../../services/member.service';
 
 @Component({
   selector: 'app-lent-detail',
@@ -20,7 +21,8 @@ export class LentDetailComponent implements OnInit {
   constructor(
     private route: ActivatedRoute,
     private lentService: LentService,
-    private globalSettings: GlobalSettings
+    private globalSettings: GlobalSettings,
+    private memberService: MemberService
   ) {
   }
 
@@ -34,7 +36,7 @@ export class LentDetailComponent implements OnInit {
         id: lentObservable.id,
         date: lentObservable.date,
         status: lentObservable.status,
-        member: {id: -1, name: '', address: '', phone: '', picn: '', status: 'Loading'},
+        member: this.memberService.getEmptyMember(),
         item: {id: -1, title: '', author: '', status: '', type: '', date: ''}
       };
       lentObservable.item.subscribe((item: Item) => this.lent.item = item);
@@ -42,4 +44,7 @@ export class LentDetailComponent implements OnInit {
     });
   }
 
+  unlent(): void {
+    this.lentService.unlent(this.lent);
+  }
 }
