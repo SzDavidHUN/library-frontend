@@ -27,14 +27,8 @@ export class ItemEditComponent implements OnInit {
   ngOnInit() {
     if (this.route.snapshot.paramMap.get('id') === 'new') {
       this.new = true;
-      this.item = {
-        id: -1,
-        title: '',
-        author: '',
-        type: '',
-        date: '',
-        status: 'In'
-      };
+      this.item = InventoryService.getEmptyItem();
+      this.item.status = 'In';
     } else {
       this.new = false;
       this.getItem();

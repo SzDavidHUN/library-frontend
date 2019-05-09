@@ -3,6 +3,10 @@ import {InventoryService} from '../../../../services/inventory.service';
 import {GlobalSettings} from '../../../../models/globalSettings';
 import {ActivatedRoute} from '@angular/router';
 import {Item} from '../../../../models/item';
+import {Member} from '../../../../models/member';
+import {LentService} from '../../../../services/lent.service';
+import {LentObservable} from '../../../../models/lentObservable';
+import {Lent} from '../../../../models/lent';
 
 @Component({
   selector: 'app-item-detail',
@@ -12,11 +16,15 @@ import {Item} from '../../../../models/item';
 export class ItemDetailComponent implements OnInit {
 
   item: Item;
+  lent: Lent;
+  currDate: Date = new Date();
 
   constructor(
     private inventoryService: InventoryService,
     private globalSettings: GlobalSettings,
-    private route: ActivatedRoute) {
+    private route: ActivatedRoute,
+    private lentService: LentService
+  ) {
   }
 
   ngOnInit() {
@@ -24,7 +32,15 @@ export class ItemDetailComponent implements OnInit {
   }
 
   getItem(): void {
-    this.inventoryService.getItem(+this.route.snapshot.paramMap.get('id')).subscribe((item: Item) => this.item = item);
+    this.inventoryService.getItem(+this.route.snapshot.paramMap.get('id')).subscribe((item: Item) => {
+      this.item = item;
+      if (item.status === 'Out') {
+        this.lentService.getLent(item.lent).subscribe((lentObservable: LentObservable) => {
+          this.lent = LentService.toLent(lentObservable);
+          lentObservable.member.subscribe((member: Member) => this.lent.member = member);
+        });
+      }
+    });
   }
 
 }

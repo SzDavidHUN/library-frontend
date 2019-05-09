@@ -7,6 +7,7 @@ import {LentObservable} from '../../../../models/lentObservable';
 import {Item} from '../../../../models/item';
 import {Member} from '../../../../models/member';
 import {MemberService} from '../../../../services/member.service';
+import {InventoryService} from '../../../../services/inventory.service';
 
 @Component({
   selector: 'app-lent-detail',
@@ -36,7 +37,7 @@ export class LentDetailComponent implements OnInit {
         date: lentObservable.date,
         status: lentObservable.status,
         member: MemberService.getEmptyMember(),
-        item: {id: -1, title: '', author: '', status: '', type: '', date: ''}
+        item: InventoryService.getEmptyItem()
       };
       lentObservable.item.subscribe((item: Item) => this.lent.item = item);
       lentObservable.member.subscribe((member: Member) => this.lent.member = member);

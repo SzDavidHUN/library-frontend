@@ -5,4 +5,5 @@ export class Item {
   status: string;
   date: string;
   type: string;
+  lent: number;
 }

@@ -6,6 +6,7 @@ import {LentObservable} from '../../../../models/lentObservable';
 import {Member} from '../../../../models/member';
 import {Item} from '../../../../models/item';
 import {MemberService} from '../../../../services/member.service';
+import {InventoryService} from '../../../../services/inventory.service';
 
 @Component({
   selector: 'app-lents-list',
@@ -36,7 +37,7 @@ export class LentsListComponent implements OnInit {
           status: lentObservable.status,
           date: lentObservable.date,
           member: MemberService.getEmptyMember(),
-          item: {id: -1, title: '', author: '', status: '', type: '', date: ''}
+          item: InventoryService.getEmptyItem()
         });
         lentObservable.member.subscribe((subscribedMember: Member) => this.lents[index].member = subscribedMember);
         lentObservable.item.subscribe((subscribedItem: Item) => this.lents[index].item = subscribedItem);

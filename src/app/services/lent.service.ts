@@ -129,7 +129,7 @@ export class LentService {
     };
     this.saveLentAsync(lent).subscribe((lentRaw: LentRaw) => {
       lent.id = lentRaw.id;
-      this.inventoryService.lentItem(item);
+      this.inventoryService.lentItem(item, lent);
       this.memberService.addLent(member, lent);
     });
   }

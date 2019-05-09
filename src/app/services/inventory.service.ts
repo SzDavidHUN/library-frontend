@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {HttpClient} from '@angular/common/http';
 import {Observable} from 'rxjs';
 import {Item} from '../models/item';
+import {Lent} from '../models/lent';
 
 @Injectable({
   providedIn: 'root'
@@ -17,12 +18,13 @@ export class InventoryService {
 
   static getEmptyItem(): Item {
     return {
-      id: .1,
+      id: -1,
       title: '',
       author: '',
       type: '',
       status: '',
-      date: ''
+      date: '',
+      lent: -1
     };
   }
 
@@ -54,13 +56,15 @@ export class InventoryService {
     });
   }
 
-  lentItem(item: Item): void {
+  lentItem(item: Item, lent: Lent): void {
     item.status = 'Out';
+    item.lent = lent.id;
     this.saveItemSync(item);
   }
 
   unlentItem(item: Item): void {
     item.status = 'In';
+    // item.lent = -1;
     this.saveItemSync(item);
   }
 }
