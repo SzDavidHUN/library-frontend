@@ -18,6 +18,7 @@ export class MemberDetailsComponent implements OnInit {
 
   member: Member;
   lents: Lent[] = [];
+  currDate: Date = new Date();
 
   constructor(
     private memberService: MemberService,

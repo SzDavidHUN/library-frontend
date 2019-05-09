@@ -28,6 +28,10 @@
             <td><b>Status:</b></td>
             <td>{{member.status | titlecase}}</td>
           </tr>
+          <tr>
+            <td><b>Number of lents:</b></td>
+            <td>{{lents.length}}</td>
+          </tr>
         </table>
       </div>
       <div class="card-footer"></div>
@@ -39,7 +43,11 @@
       <div class="card-header">Lents ({{member.lents.length}})</div>
       <div class="card-body">
         <div *ngFor="let lent of lents" class="card">
-          <div class="card-header font-weight-bold">{{lent.item.title}}</div>
+          <div class="card-header font-weight-bold">
+            {{lent.item.title}}
+            <button class="btn btn-sm btn-outline-primary float-right" routerLink="/lent/{{lent.id}}">Check lent
+            </button>
+          </div>
           <div class="card-body">
             <table>
               <tr>
@@ -60,7 +68,10 @@
               </tr>
               <tr>
                 <td>Lented:</td>
-                <td>{{lent.date | date: 'yyyy. MM. dd.'}}</td>
+                <td>{{lent.date | date: 'yyyy. MM. dd.'}} ({{((currDate.valueOf() - lent.date) / 86400000).toFixed(0)}}
+                  days
+                  ago)
+                </td>
               </tr>
             </table>
           </div>
