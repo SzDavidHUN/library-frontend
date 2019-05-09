@@ -44,7 +44,7 @@
   </div>
   <div class="col-3">
     <div [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode" class="card">
-      <div class="card-header font-weight-bold">Filter settings</div>
+      <div class="card-header font-weight-bold">Filter</div>
       <div class="card-body">
         <label for="titleBox">Title:</label>
         <input (input)="updateFilter()" [(ngModel)]="titleFilter" class="form-control" id="titleBox"

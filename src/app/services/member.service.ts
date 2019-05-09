@@ -36,7 +36,6 @@ export class MemberService {
     this.saveMemberObservable(member).subscribe();
   }
 
-
   removeMemberSync(id: number): void {
     this.getMember(id).subscribe((member: Member) => {
       member.status = 'Removed';

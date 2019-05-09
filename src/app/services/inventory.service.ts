@@ -53,4 +53,14 @@ export class InventoryService {
     this.saveItemSync(item);
   }
 
+  getEmptyItem(): Item {
+    return {
+      id: .1,
+      title: '',
+      author: '',
+      type: '',
+      status: '',
+      date: ''
+    };
+  }
 }
