@@ -46,6 +46,9 @@
     <div [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode" class="card">
       <div class="card-header font-weight-bold">Filter</div>
       <div class="card-body">
+        <label for="itemidBox">ID:</label>
+        <input (input)="updateFilter()" [(ngModel)]="itemidFilter" class="form-control" id="itemidBox"
+               placeholder="Title" type="text"><br/>
         <label for="titleBox">Title:</label>
         <input (input)="updateFilter()" [(ngModel)]="titleFilter" class="form-control" id="titleBox"
                placeholder="Title" type="text"><br/>

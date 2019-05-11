@@ -15,6 +15,7 @@ export class InventoryListComponent implements OnInit {
   showDiscarded: boolean;
   showAvailable = true;
   showLented: boolean;
+  itemidFilter: string;
   titleFilter: string;
   authorFilter: string;
 
@@ -26,6 +27,7 @@ export class InventoryListComponent implements OnInit {
 
   ngOnInit() {
     this.getItems();
+    this.itemidFilter = '';
     this.titleFilter = '';
     this.authorFilter = '';
   }
@@ -56,6 +58,7 @@ export class InventoryListComponent implements OnInit {
   updateFilter(): void {
     this.items = this.allItems.filter((item: Item) => {
       return (
+        (this.itemidFilter === '' ? true : item.id === (+this.itemidFilter)) &&
         (this.titleFilter === '' ? true : item.title.includes(this.titleFilter)) &&
         (this.authorFilter === '' ? true : item.author.includes(this.authorFilter))
       ) && ((this.showAvailable ? item.status === 'In' : false) ||
