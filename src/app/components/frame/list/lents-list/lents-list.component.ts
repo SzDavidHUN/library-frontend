@@ -24,6 +24,9 @@ export class LentsListComponent implements OnInit {
   showLate = true;
   showReturned = false;
 
+  lentidFilter = '';
+  memberidFilter = '';
+  itemidFilter = '';
   titleFilter = '';
   authorFilter = '';
   memberFilter = '';
@@ -56,7 +59,6 @@ export class LentsListComponent implements OnInit {
           this.allLents[index].item = subscribedItem;
           this.updateFilter();
         });
-        // Ha az első oldalbetöltéskor hiba lép fel, akkor a két observable lefutása után meg kell hívni az updateFiler() metódust
       });
     });
   }
@@ -79,6 +81,9 @@ export class LentsListComponent implements OnInit {
   updateFilter(): void {
     this.lents = this.allLents.filter((lent: Lent) => {
       return (
+        (this.lentidFilter === '' ? true : lent.id === (+this.lentidFilter)) &&
+        (this.memberidFilter === '' ? true : lent.member.id === (+this.memberidFilter)) &&
+        (this.itemidFilter === '' ? true : lent.item.id === (+this.itemidFilter)) &&
         (this.titleFilter === '' ? true : lent.item.title.includes(this.titleFilter)) &&
         (this.authorFilter === '' ? true : lent.item.author.includes(this.authorFilter)) &&
         (this.memberFilter === '' ? true : lent.member.name.includes(this.memberFilter))

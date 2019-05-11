@@ -47,6 +47,15 @@
     <div [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode" class="card">
       <div class="card-header font-weight-bold">Filter</div>
       <div class="card-body">
+        <label for="lentidBox">Lent ID:</label>
+        <input (input)="updateFilter()" [(ngModel)]="lentidFilter" class="form-control" id="lentidBox"
+               placeholder="Title" type="text"><br/>
+        <label for="memberidBox">Member ID:</label>
+        <input (input)="updateFilter()" [(ngModel)]="memberidFilter" class="form-control" id="memberidBox"
+               placeholder="Title" type="text"><br/>
+        <label for="itemidBox">Item ID:</label>
+        <input (input)="updateFilter()" [(ngModel)]="itemidFilter" class="form-control" id="itemidBox"
+               placeholder="Title" type="text"><br/>
         <label for="memberBox">Member:</label>
         <input (input)="updateFilter()" [(ngModel)]="memberFilter" class="form-control" id="memberBox"
                placeholder="Member" type="text"><br/>
