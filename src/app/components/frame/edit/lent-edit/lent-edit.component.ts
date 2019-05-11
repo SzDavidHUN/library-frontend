@@ -15,10 +15,19 @@ import {Location} from '@angular/common';
 export class LentEditComponent implements OnInit {
 
   members: Member[];
+  allMembers: Member[];
   items: Item[];
+  allItems: Item[];
   selectedMember: Member;
   selectedItem: Item;
   countOfLentsOfSelectedMember: number;
+
+  memberidFilter = '';
+  nameFilter = '';
+
+  itemidFilter = '';
+  titleFilter = '';
+  authorFilter = '';
 
   constructor(
     private globalSettings: GlobalSettings,
@@ -55,12 +64,37 @@ export class LentEditComponent implements OnInit {
     this.lentService.saveNewLentSync(this.selectedMember, this.selectedItem);
   }
 
+  updateMemberFilter(): void {
+    this.members = this.allMembers.filter((member: Member) => {
+      return (this.memberidFilter === '' ? true : member.id === (+this.memberidFilter)) &&
+        (this.nameFilter === '' ? true : member.name.includes(this.nameFilter));
+    });
+
+  }
+
+  updateInventoryFilter(): void {
+    this.items = this.allItems.filter((item: Item) => {
+      return (
+        (this.itemidFilter === '' ? true : item.id === (+this.itemidFilter)) &&
+        (this.titleFilter === '' ? true : item.title.includes(this.titleFilter)) &&
+        (this.authorFilter === '' ? true : item.author.includes(this.authorFilter))
+      );
+    });
+
+  }
+
   private getMembers(): void {
-    this.memberService.getMembers().subscribe((members: Member[]) =>
-      this.members = members.filter((member: Member) => member.status === 'active'));
+    this.memberService.getMembers().subscribe((members: Member[]) => {
+      this.allMembers = members.filter((member: Member) => member.status === 'active');
+      this.updateMemberFilter();
+    });
   }
 
   private getItems(): void {
-    this.inventoryService.getLentableItems().subscribe((items: Item[]) => this.items = items);
+    this.inventoryService.getLentableItems().subscribe((items: Item[]) => {
+      this.allItems = items;
+      this.updateInventoryFilter();
+    });
   }
+
 }
