@@ -54,24 +54,5 @@
       <div class="card-footer"></div>
     </div>
   </div>
-  <div class="col-3">
-    <div [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode" class="card">
-      <div class="card-header font-weight-bold">Manage lents</div>
-      <div class="card-body">
-        <button class="btn btn-block btn-outline-success">New lent</button>
-        <button class="btn btn-block btn-outline-primary">Check lents</button>
-      </div>
-      <div class="card-footer"></div>
-    </div>
-    <br/>
-    <div *ngIf="!new" [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode"
-         class="card">
-      <div class="card-header font-weight-bold">Manage member</div>
-      <div class="card-body">
-        <button class="btn btn-block btn-outline-success" routerLink="/member/edit/new">New member</button>
-        <button class="btn btn-block btn-outline-danger">Remove member</button>
-      </div>
-      <div class="card-footer"></div>
-    </div>
-  </div>
+  <div class="col-3"></div>
 </div>

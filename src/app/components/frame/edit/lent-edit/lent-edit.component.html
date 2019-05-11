@@ -152,18 +152,20 @@
     </div>
   </div>
   <div class="col-3">
-    <div [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode" class="card">
-      <div class="card-header font-weight-bold">Filter settings</div>
+    <div *ngIf="!selectedMember" [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode"
+         class="card">
+      <div class="card-header font-weight-bold">Member filter</div>
       <div class="card-body">
 
       </div>
       <div class="card-footer"></div>
     </div>
-    <br/>
-    <div [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode" class="card">
-      <div class="card-header font-weight-bold">Manage inventory</div>
+    <br *ngIf="!selectedMember"/>
+    <div *ngIf="!selectedItem" [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode"
+         class="card">
+      <div class="card-header font-weight-bold">Item filter</div>
       <div class="card-body">
-        <button class="btn btn-block btn-outline-success" routerLink="/item/edit/new">New item</button>
+
       </div>
       <div class="card-footer"></div>
     </div>
