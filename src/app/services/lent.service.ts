@@ -14,14 +14,14 @@ import {Item} from '../models/item';
 })
 export class LentService {
 
+  private apiUrl = 'http://localhost:3000/db/lents/';
+
   constructor(
     private memberService: MemberService,
     private inventoryService: InventoryService,
     private httpClient: HttpClient
   ) {
   }
-
-  private apiUrl = 'http://localhost:3000/db/lents/';
 
   static toLent(lentObservable: LentObservable): Lent {
     return {

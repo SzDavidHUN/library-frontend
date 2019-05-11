@@ -9,12 +9,12 @@ import {Lent} from '../models/lent';
 })
 export class MemberService {
 
+  private apiUrl = 'http://localhost:3000/db/members/';
+
   constructor(
     private http: HttpClient
   ) {
   }
-
-  private apiUrl = 'http://localhost:3000/db/members/';
 
   static getEmptyMember(): Member {
     return {id: -1, name: '', address: '', phone: '', picn: '', status: 'active', lents: []};

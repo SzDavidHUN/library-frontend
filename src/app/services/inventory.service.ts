@@ -9,12 +9,12 @@ import {Lent} from '../models/lent';
 })
 export class InventoryService {
 
+  private apiUrl = 'http://localhost:3000/db/inventory/';
+
   constructor(
     private http: HttpClient
   ) {
   }
-
-  private apiUrl = 'http://localhost:3000/db/inventory/';
 
   static getEmptyItem(): Item {
     return {
