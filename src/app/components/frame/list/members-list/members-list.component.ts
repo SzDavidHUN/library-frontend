@@ -12,7 +12,8 @@ export class MembersListComponent implements OnInit {
 
   allMembers: Member[];
   members: Member[];
-  name: string;
+  memberidFilter: string;
+  nameFilter: string;
   showRemoved: boolean;
 
   constructor(
@@ -26,7 +27,8 @@ export class MembersListComponent implements OnInit {
   }
 
   getMembers(): void {
-    this.name = '';
+    this.memberidFilter = '';
+    this.nameFilter = '';
     this.showRemoved = false;
     this.memberService.getMembers().subscribe((members: Member[]) => this.allMembers = members, () => {
     }, () => this.updateFilter());
@@ -38,7 +40,8 @@ export class MembersListComponent implements OnInit {
 
   updateFilter(): void {
     this.members = this.allMembers.filter((member: Member) => {
-      return (this.name === '' ? true : member.name.includes(this.name)) &&
+      return (this.memberidFilter === '' ? true : member.id === (+this.memberidFilter)) &&
+        (this.nameFilter === '' ? true : member.name.includes(this.nameFilter)) &&
         (this.showRemoved ? true : member.status !== 'Removed');
     });
   }
