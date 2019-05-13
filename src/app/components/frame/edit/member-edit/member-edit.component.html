@@ -9,7 +9,7 @@
             <input [(ngModel)]="member.id" aria-describedby="idBoxHelp" class="form-control form-control-lg disabled"
                    disabled
                    id="idBox" name="idBox" placeholder="ID of the member"
-                   type="number">
+                   [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode" type="text">
             <small class="form-text text-muted" id="idBoxHelp">The Identification number (ID) for the
               member. It is automatically assigned, and cannot be modified.
             </small>
@@ -19,27 +19,32 @@
             <input [(ngModel)]="member.name" aria-describedby="nameBoxHelp" class="form-control form-control-lg"
                    id="nameBox"
                    name="nameBox" placeholder="Name of the member"
-                   type="text">
+                   [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode" type="text">
             <small class="form-text text-muted" id="nameBoxHelp">The real name of the member.</small>
           </div>
           <div class="form-group">
             <label for="addressBox">Address:</label>
             <input [(ngModel)]="member.address" aria-describedby="addressBoxHelp" class="form-control"
                    id="addressBox" name="addressBox"
+                   [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode"
                    placeholder="Address eg: 3600 Ózd, Sintér straße 26." type="text">
             <small class="form-text text-muted" id="addressBoxHelp">The address of the member.</small>
           </div>
           <div class="form-group">
             <label for="phoneBox">Phone number:</label>
             <input [(ngModel)]="member.phone" aria-describedby="phoneBoxHelp" class="form-control" id="phoneBox"
-                   name="phoneBox" placeholder="Phone number eg: +36 30 123 4567" type="tel">
+                   [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode"
+                   name="phoneBox"
+                   placeholder="Phone number eg: +36 30 123 4567" type="text">
             <small class="form-text text-muted" id="phoneBoxHelp">The telephone number of the member.
             </small>
           </div>
           <div class="form-group">
             <label for="picnBox">Personal Identification Card Number:</label>
             <input [(ngModel)]="member.picn" aria-describedby="picnBoxHelp" class="form-control" id="picnBox"
-                   name="picnBox" placeholder="PICN" type="text">
+                   [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode" name="picnBox"
+                   placeholder="PICN"
+                   type="text">
             <small class="form-text text-muted" id="picnBoxHelp">The members persional identifications cards
               identification number. (Required by the Department of Redundancy Department)
             </small>

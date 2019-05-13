@@ -42,7 +42,8 @@
          class="card">
       <div class="card-header">Lents ({{member.lents.length}})</div>
       <div class="card-body">
-        <div *ngFor="let lent of lents" class="card">
+        <div *ngFor="let lent of lents" [class.bg-dark]="globalSettings.darkmode"
+             [class.text-light]="globalSettings.darkmode" class="card">
           <div class="card-header font-weight-bold">
             {{lent.item.title}}
             <button class="btn btn-sm btn-outline-primary float-right" routerLink="/lent/{{lent.id}}">Check lent

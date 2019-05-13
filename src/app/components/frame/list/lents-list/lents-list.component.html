@@ -49,22 +49,34 @@
       <div class="card-body">
         <label for="lentidBox">Lent ID:</label>
         <input (input)="updateFilter()" [(ngModel)]="lentidFilter" class="form-control" id="lentidBox"
-               placeholder="Lent ID" type="text"><br/>
+               [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode"
+               placeholder="Lent ID"
+               type="text"><br/>
         <label for="memberidBox">Member ID:</label>
         <input (input)="updateFilter()" [(ngModel)]="memberidFilter" class="form-control" id="memberidBox"
-               placeholder="Member ID" type="text"><br/>
+               [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode"
+               placeholder="Member ID"
+               type="text"><br/>
         <label for="itemidBox">Item ID:</label>
         <input (input)="updateFilter()" [(ngModel)]="itemidFilter" class="form-control" id="itemidBox"
-               placeholder="Item ID" type="text"><br/>
+               [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode"
+               placeholder="Item ID"
+               type="text"><br/>
         <label for="memberBox">Member:</label>
         <input (input)="updateFilter()" [(ngModel)]="memberFilter" class="form-control" id="memberBox"
-               placeholder="Member name" type="text"><br/>
+               [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode"
+               placeholder="Member name"
+               type="text"><br/>
         <label for="titleBox">Title:</label>
         <input (input)="updateFilter()" [(ngModel)]="titleFilter" class="form-control" id="titleBox"
-               placeholder="Title" type="text"><br/>
+               [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode"
+               placeholder="Title"
+               type="text"><br/>
         <label for="authorBox">Author:</label>
         <input (input)="updateFilter()" [(ngModel)]="authorFilter" class="form-control" id="authorBox"
-               placeholder="Author" type="text"><br/>
+               [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode"
+               placeholder="Author"
+               type="text"><br/>
         <button (click)="changeIntime()" [class.active]="showIntime" [class.btn-outline-danger]="!showIntime"
                 [class.btn-outline-success]="showIntime" class="btn btn-block">Show in time
         </button>
@@ -75,7 +87,9 @@
                 [class.btn-outline-success]="showReturned" class="btn btn-block">Show returned
         </button>
         <label for="maxDaysOfLent">Maximum days of lent:</label>
-        <input (input)="updateFilter()" [(ngModel)]="maxDaysOfLent" id="maxDaysOfLent" type="number">
+        <input (input)="updateFilter()" [(ngModel)]="maxDaysOfLent" [class.bg-dark]="globalSettings.darkmode"
+               [class.text-light]="globalSettings.darkmode"
+               id="maxDaysOfLent" type="number">
       </div>
       <div class="card-footer"></div>
     </div>

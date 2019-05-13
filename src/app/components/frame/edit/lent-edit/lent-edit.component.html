@@ -10,7 +10,9 @@
       </div>
       <div class="card-body">
         <div *ngIf="!selectedMember" class="d-flex flex-wrap flex-row">
-          <div *ngFor="let member of members" class="card m-1" style="width: 32%;">
+          <div *ngFor="let member of members" [class.bg-dark]="globalSettings.darkmode"
+               [class.text-light]="globalSettings.darkmode"
+               class="card m-1" style="width: 32%;">
             <div class="card-header font-weight-bold">{{member.name}}
               <button (click)="selectMember(member)" *ngIf="member.lents.length < 3"
                       class="btn btn-sm btn-outline-success float-right">Select
@@ -84,7 +86,9 @@
       </div>
       <div class="card-body">
         <div *ngIf="!selectedItem" class="d-flex flex-wrap flex-row">
-          <div *ngFor="let item of items" class="card m-1" style="width: 32%;">
+          <div *ngFor="let item of items" [class.bg-dark]="globalSettings.darkmode"
+               [class.text-light]="globalSettings.darkmode" class="card m-1"
+               style="width: 32%;">
             <div class="card-header font-weight-bold">{{item.title}}
               <button (click)="selectItem(item)" class="btn btn-sm btn-outline-success float-right">Select</button>
             </div>
@@ -158,11 +162,12 @@
       <div class="card-body">
         <label for="memberidBox">ID:</label>
         <input (input)="updateMemberFilter()" [(ngModel)]="memberidFilter" class="form-control" id="memberidBox"
+               [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode"
                placeholder="Member ID" type="text"><br/>
         <label for="nameBox">Name:</label>
         <input (input)="updateMemberFilter()" [(ngModel)]="nameFilter" class="form-control" id="nameBox"
                placeholder="Name"
-               type="text">
+               [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode" type="text">
       </div>
       <div class="card-footer"></div>
     </div>
@@ -173,12 +178,15 @@
       <div class="card-body">
         <label for="itemidBox">ID:</label>
         <input (input)="updateInventoryFilter()" [(ngModel)]="itemidFilter" class="form-control" id="itemidBox"
+               [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode"
                placeholder="Item ID" type="text"><br/>
         <label for="titleBox">Title:</label>
         <input (input)="updateInventoryFilter()" [(ngModel)]="titleFilter" class="form-control" id="titleBox"
+               [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode"
                placeholder="Title" type="text"><br/>
         <label for="authorBox">Author:</label>
         <input (input)="updateInventoryFilter()" [(ngModel)]="authorFilter" class="form-control" id="authorBox"
+               [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode"
                placeholder="Author" type="text"><br/>
       </div>
       <div class="card-footer"></div>

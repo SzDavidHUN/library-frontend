@@ -37,10 +37,12 @@
       <div class="card-body">
         <label for="memberidBox">ID:</label>
         <input (input)="updateFilter()" [(ngModel)]="memberidFilter" class="form-control" id="memberidBox"
-               placeholder="Member ID" type="text"><br/>
+               [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode"
+               placeholder="Member ID"
+               type="text"><br/>
         <label for="nameBox">Name:</label>
         <input (input)="updateFilter()" [(ngModel)]="nameFilter" class="form-control" id="nameBox" placeholder="Name"
-               type="text">
+               [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode" type="text">
         <br>
         <button (click)="changeRemoved()" [class.active]="showRemoved" [class.btn-outline-danger]="!showRemoved"
                 [class.btn-outline-success]="showRemoved" class="btn btn-block">Show removed
