@@ -6,6 +6,7 @@ import {LentService} from '../../../../services/lent.service';
 import {Member} from '../../../../models/member';
 import {Item} from '../../../../models/item';
 import {Location} from '@angular/common';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-lent-edit',
@@ -34,7 +35,8 @@ export class LentEditComponent implements OnInit {
     private memberService: MemberService,
     private inventoryService: InventoryService,
     private lentService: LentService,
-    private location: Location
+    private location: Location,
+    private router: Router
   ) {
   }
 
@@ -62,6 +64,7 @@ export class LentEditComponent implements OnInit {
 
   save(): void {
     this.lentService.saveNewLentSync(this.selectedMember, this.selectedItem);
+    this.router.navigate(['/lents']);
   }
 
   updateMemberFilter(): void {

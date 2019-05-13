@@ -2,7 +2,7 @@ import {Component, OnInit} from '@angular/core';
 import {GlobalSettings} from '../../../../models/globalSettings';
 import {InventoryService} from '../../../../services/inventory.service';
 import {Item} from '../../../../models/item';
-import {ActivatedRoute} from '@angular/router';
+import {ActivatedRoute, Router} from '@angular/router';
 import {formatDate, Location} from '@angular/common';
 
 @Component({
@@ -20,7 +20,8 @@ export class ItemEditComponent implements OnInit {
     private globalSettings: GlobalSettings,
     private inventoryService: InventoryService,
     private route: ActivatedRoute,
-    private location: Location
+    private location: Location,
+    private router: Router
   ) {
   }
 
@@ -41,6 +42,7 @@ export class ItemEditComponent implements OnInit {
 
   saveItem(): void {
     this.inventoryService.saveItemSync(this.item);
+    this.router.navigate(['/inventory']);
   }
 
   setCurrentDate() {
