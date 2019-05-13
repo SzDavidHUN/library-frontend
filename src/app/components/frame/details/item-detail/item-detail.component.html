@@ -84,13 +84,13 @@
       <div class="card-header font-weight-bold">Manage lent</div>
       <div class="card-body">
         <div *ngIf="item.status === 'In'">
-          <button class="btn btn-block btn-outline-success">New lent</button>
+          <!--          <button class="btn btn-block btn-outline-success">New lent</button>-->
           <br/>
           <div class="alert alert-success">The {{item.type | lowercase}} is currently available to lent.</div>
         </div>
         <div *ngIf="item.status === 'Out'">
           <button class="btn btn-block btn-outline-primary" routerLink="/lent/{{lent.id}}">Check lent</button>
-          <button class="btn btn-block btn-outline-primary">Unlent</button>
+          <!--          <button class="btn btn-block btn-outline-primary">Unlent</button>-->
           <br/>
           <div class="alert alert-primary">The {{item.type | lowercase}} is already lented.</div>
         </div>
