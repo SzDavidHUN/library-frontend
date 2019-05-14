@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {GlobalSettings} from '../../../models/globalSettings';
 
 @Component({
   selector: 'app-homepage',
@@ -7,7 +8,9 @@ import {Component, OnInit} from '@angular/core';
 })
 export class HomepageComponent implements OnInit {
 
-  constructor() {
+  constructor(
+    private globalSettings: GlobalSettings
+  ) {
   }
 
   ngOnInit() {

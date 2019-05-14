@@ -1,9 +1,10 @@
-<h1 class="display-1 text-center">Library</h1>
+<h1 [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode"
+    class="display-1 text-center">Library</h1>
 <br/>
-<div class="container">
+<div [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode" class="container">
   <div class="row">
     <div class="col-4">
-      <div class="jumbotron">
+      <div [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode" class="jumbotron">
         <h1>Members</h1>
         <p>Check registered members of the library. Click them to see what they borrowed, when, and for other details
           about them. Add new with the New Member button. You can filter them too with the instantly filtering filters
@@ -13,7 +14,7 @@
       </div>
     </div>
     <div class="col-4">
-      <div class="jumbotron">
+      <div [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode" class="jumbotron">
         <h1>Inventory</h1>
         <p>Check the registered items in the library. Click them to see who they are borrowed by. Add new with the New
           Item button. You can filter them too with the instantly filtering filters on the sidebar.</p>
@@ -21,7 +22,7 @@
       </div>
     </div>
     <div class="col-4">
-      <div class="jumbotron">
+      <div [class.bg-dark]="globalSettings.darkmode" [class.text-light]="globalSettings.darkmode" class="jumbotron">
         <h1>Lents</h1>
         <p>Check the active (and past) lents here. Click them to see when they were created, what is borrowed and by
           who. Add new with the New Lent button. Creating new lent never was this easy. You can filter them too with the
